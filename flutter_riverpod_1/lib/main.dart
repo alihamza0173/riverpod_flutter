@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final currentDate = Provider((ref) => DateTime.now());
+final Provider<DateTime> currentDate = Provider((ref) => DateTime.now());
 
 class Counter extends StateNotifier<int?> {
   Counter() : super(null);
@@ -27,7 +27,7 @@ class Counter extends StateNotifier<int?> {
   int? get value => state;
 }
 
-final counterProvider =
+final StateNotifierProvider<Counter, int?> counterProvider =
     StateNotifierProvider<Counter, int?>((ref) => Counter());
 
 class MyHomePage extends ConsumerWidget {
@@ -35,6 +35,7 @@ class MyHomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    DateTime date = ref.watch(currentDate);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Demo Home Page'),

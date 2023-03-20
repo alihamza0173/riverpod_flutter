@@ -34,10 +34,10 @@ Future<String> getCityWeather(Cities city) async {
 }
 
 //UI writes to this and reads from it
-final currentCityProvider = StateProvider<Cities?>((ref) => null);
+final StateProvider<Cities?> currentCityProvider = StateProvider<Cities?>((ref) => null);
 
 //UI reads this
-final weatherProvider = FutureProvider<String>((ref) {
+final FutureProvider<String> weatherProvider = FutureProvider<String>((ref) {
   final city = ref.watch(currentCityProvider);
   if (city != null) {
     return getCityWeather(city);
