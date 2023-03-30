@@ -14,7 +14,53 @@ Unlike Provider, which relies on dependency injection using an `InheritedWidget
 
 Overall, Riverpod is a powerful and flexible state management solution that can help you build complex applications with ease.
 
+## Provider Scope
+when you create **providers** with riverpod you also need to have something called **provider scope**.
+
+It is an object that will allow you to work with providers. it allows various providers to be available in your application.
+
+Providers are global functions and flutter does’nt know about global functions.
+For providers to work, you need to add `ProviderScope` at the root of your
+ Flutter applications:
+
+ ```dart
+ void main() {
+   runApp(ProviderScope(child: MyApp()));
+ }
+ ```
+
+**Flutter Hooks** allows you to reuse the code in a concise way.
+
+**Providers** are global functions they have inputs and outputs sometimes they have multiple inputs but only one input.
+
+### Consumer Widget
+these are the special kind of widgets that listens to providers so that if any changes happens it UI automaticaly updates when needed.
+
+### ref parameter
+it is a parameter we can do a lot using this parameter.
+
+you can use this ref to even depend on other providers so for instance you have a provider that gives you the date and time every second and in another provider you can depend on that provider to make an API call.
+
+it’s your window to application. because these global functions will don’t have access to other things you see because they are not dependent on other things inside your application.
+
+```dart
+final currentDate = Provider((ref) => DateTime.now());
+```
+
+in this **ref** is:
+
+The `ref` parameter is an instance of `ProviderReference`, which is basically a reference to the provider itself along with some additional functionalities like reading from and modifying state, as well as accessing other providers.
+
+By using the `ref` parameter, we can perform advanced operations like interacting with external APIs, accessing database, or even depending on other providers. This makes it easy to manage the application state and allows us to create modular, testable and scalable code in Flutter. Overall, the `ref` parameter serves as a gateway to managing the global state of our application.
+
+### State Notifier
+**State Notifier** is an object that is already is a `class` that is shipped with flutter so it’s nothing that a riverpod has provided to us so it’s not inside te riverpod library.
+
+**state notifier** is a class that has state object and you can listen to changes that happen to the state of the State Notifier. because that state is like a kind of stream so you can add value to this and set the value of the state and read the value of the state in kind of like of stream.
+
 [Riverpod Documentation](https://riverpod.dev/docs/getting_started)
+
+
 
 
 ## Examples

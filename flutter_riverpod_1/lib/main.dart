@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//it is simple provider which is returning the object of DateTime
 final Provider<DateTime> currentDate = Provider((ref) => DateTime.now());
 
 class Counter extends StateNotifier<int?> {
